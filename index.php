@@ -27,7 +27,18 @@
 				"email" => 'Kennedy@example.com'
 		]
 
-	]
+	];
+
+
+$connect = mysqli_connect('localhost', 'root', '', 'qwerty');
+
+foreach ($array as $key => $value) {
+
+	mysqli_query($connect, "INSERT INTO users VALUES('$value[id]', '$value[username]', '$value[email]')");
+
+}
+
+
 
 
 	?>
