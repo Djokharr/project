@@ -7,41 +7,6 @@
 </head>
 <body>
 	
-	<?php
-	
-	$array = [
-
-		 [
-				"id" => '1',
-				"username" => 'John Doe',
-				"email" => 'john@example.com'
-		],
-		[
-				"id" => '2',
-				"username" => 'George Washington',
-				"email" => 'George@example.com'
-		],
-		[
-				"id" => '3',
-				"username" => 'John Kennedy',
-				"email" => 'Kennedy@example.com'
-		]
-
-	];
-
-
-$connect = mysqli_connect('localhost', 'root', '', 'qwerty');
-
-foreach ($array as $key => $value) {
-
-	mysqli_query($connect, "INSERT INTO users VALUES('$value[id]', '$value[username]', '$value[email]')");
-
-}
-
-
-
-
-	?>
 
 	<div class="container">
 		<div class="row">
@@ -61,7 +26,14 @@ foreach ($array as $key => $value) {
 
 					<tbody>
 						<?php
-						foreach ($array as $key => $value) {
+						$pdo = new PDO('mysql:host=localhost;dbname=qwerty;charset=utf8;', 'root' , '');
+
+						$sql = 'SELECT * FROM users';
+
+						$statement = $pdo->query($sql);
+						$users = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+						foreach ($users as $key => $value) {
 							echo "
 						<tr>
 							<td>$value[id]</td>
