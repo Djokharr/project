@@ -27,17 +27,14 @@
 					<tbody>
 						<?php
 						$pdo = new PDO('mysql:host=localhost;dbname=qwerty;charset=utf8;', 'root' , '');
-
 						$sql = 'SELECT * FROM users';
-
 						$statement = $pdo->query($sql);
 						$users = $statement->fetchAll(PDO::FETCH_ASSOC);
-
 						foreach ($users as $key => $value) {
 							echo "
 						<tr>
 							<td>$value[id]</td>
-							<td>$value[username]</td>
+							<td>$value[name]</td>
 							<td>$value[email]</td>
 							<td>
 								<a href='edit.html' class='btn btn-warning'>Edit</a>
